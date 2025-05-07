@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ criminal.name }} Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>{{ criminal.name }} Details</h1>
+      <div class="criminal-detail">
+        <img src="{{ criminal.image }}" alt="{{ criminal.name }}" />
+        <p><strong>ID:</strong> {{ criminal.id }}</p>
+        <p><strong>Height:</strong> {{ criminal.height }}</p>
+        <p><strong>Weight:</strong> {{ criminal.weight }}</p>
+      </div>
+      <p><a href="{{ url_for('index') }}">Back to all Criminals</a></p>

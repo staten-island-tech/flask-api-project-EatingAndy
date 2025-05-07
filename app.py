@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     response = requests.get("https://completecriminalchecks.com/Developers/limit=100")
+    print(response.text)
     data = response.json()
     criminal_list = data['results']
     criminals = []
@@ -14,7 +15,7 @@ def index():
         url = criminal['url']
         parts = url.strip("/").split("/")
         id = parts[-1]
-        image_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png"
+        image_url = image_url = f"https://completecriminalchecks.com/Developers/{id}.png"
         criminals.append({
             'name' : criminal['name'].capitalize(),
             'id' : id,
@@ -22,18 +23,19 @@ def index():
         })
     return render_template("index.html", criminals = criminals)
 
+@app.route("/criminal/<id>")
 def criminal_detail(id):
     response = requests.get(f"https://completecriminalchecks.com/Developers/{id}")
-    data = response.json
+    data = response.json()
     height = data.get('height')
     weight = data.get('weight')
     name = data.get('name').capitalize()
     image_url = f"https://completecriminalchecks.com/Developers/{id}.png"
 
-    return render_template("criminals.html," criminal={
+    return render_template("criminals.html", criminal={
         'name': name,
         'id': id,
-        'image': image_url
+        'image': image_url,
         'height': height,
         'weight': weight
     })

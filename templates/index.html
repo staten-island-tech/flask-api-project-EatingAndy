@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Criminals on the Loose</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>First 100 Criminals</h1>
+      <div class="card-container">
+        {% for criminal in criminals %}
+        <a href="{{ url_for('criminal_detail', id=criminal.id) }}" class="card-link">
+          <div class="card">
+            <img src="{{ criminal.image }}" alt="{{ criminal.name }}" />
+            <div class="card-body">
+              <h5 class="card-title">{{ criminal.name }}</h5>
+              <p class="card-text">ID: {{ criminal.id }}</p>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
