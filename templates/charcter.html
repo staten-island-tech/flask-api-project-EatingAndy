@@ -12,29 +12,12 @@
         <img src="{{ character.image }}" alt="{{ character.name }}" />
         <p><strong>ID:</strong> {{ character.id }}</p>
 
-        {% if character.films %}
-          <p><strong>Films:</strong> {{ character.films | join(', ') }}</p>
-        {% endif %}
-
-        {% if character.tvShows %}
-          <p><strong>TV Shows:</strong> {{ character.tvShows | join(', ') }}</p>
-        {% endif %}
-
-        {% if character.videoGames %}
-          <p><strong>Video Games:</strong> {{ character.videoGames | join(', ') }}</p>
-        {% endif %}
-
-        {% if character.parkAttractions %}
-          <p><strong>Park Attractions:</strong> {{ character.parkAttractions | join(', ') }}</p>
-        {% endif %}
-
-        {% if character.allies %}
-          <p><strong>Allies:</strong> {{ character.allies | join(', ') }}</p>
-        {% endif %}
-
-        {% if character.enemies %}
-          <p><strong>Enemies:</strong> {{ character.enemies | join(', ') }}</p>
-        {% endif %}
+        <p><strong>Films:</strong> {{ character.films | join(', ') }}</p>
+        <p><strong>TV Shows:</strong> {{ character.tvShows | join(', ') }}</p>
+        <p><strong>Video Games:</strong> {{ character.videoGames | join(', ') }}</p>
+        <p><strong>Park Attractions:</strong> {{ character.parkAttractions | join(', ') }}</p>
+        <p><strong>Allies:</strong> {{ character.allies | join(', ') }}</p>
+        <p><strong>Enemies:</strong> {{ character.enemies | join(', ') }}</p>
       </div>
       <p><a href="{{ url_for('index') }}">Back to all Characters</a></p>
     </div>
