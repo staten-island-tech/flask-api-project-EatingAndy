@@ -16,6 +16,9 @@ def index():
     characters = []
 
     for character in character_list:
+        character_id = character.get("_id")
+        if not character_id:
+            continue
         characters.append({
             'name': character.get('name', 'Unknown'),
             'id': character.get('_id'),
