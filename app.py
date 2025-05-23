@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    response = requests.get("https://api.disneyapi.dev/character")
+    response = requests.get("https://api.disneyapi.dev/character/{id}")
     
     if response.status_code != 200:
         return "Failed to fetch data from Disney API"
@@ -20,7 +20,7 @@ def index():
         if not character_id:
             continue
         characters.append({
-            'name': character.get('name', 'Unknown'),
+            'name': character.get('name', ''),
             'id': character.get('_id'),
             'image': character.get('imageUrl', '')
         })
@@ -37,7 +37,7 @@ def character_detail(id):
     data = response.json()
     
     character = {
-        'name': data.get('name', 'Unknown'),
+        'name': data.get('name', ''),
         'id': data.get('_id'),
         'image': data.get('imageUrl', ''),
         'films': data.get('films', []),

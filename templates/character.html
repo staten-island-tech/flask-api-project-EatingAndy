@@ -9,9 +9,8 @@
     <div class="container">
       <h1>{{ character.name }} Details</h1>
       <div class="character-detail">
-        <img src="{{ character.image }}" alt="{{ character.name }}" />
+        <img src="{{ character.imageUrl }}" alt="{{ character.name }}" />
         <p><strong>ID:</strong> {{ character.id }}</p>
-
         <p><strong>Films:</strong> {{ character.films | join(', ') }}</p>
         <p><strong>TV Shows:</strong> {{ character.tvShows | join(', ') }}</p>
         <p><strong>Video Games:</strong> {{ character.videoGames | join(', ') }}</p>
