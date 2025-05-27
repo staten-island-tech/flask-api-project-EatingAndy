@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ card.name }}</title>
+</head>
+<body>
+    <h1>{{ card.name }}</h1>
+    <img src="{{ card.card_images[0].image_url }}" alt="{{ card.name }}" width="200">
+    <p><strong>Type:</strong> {{ card.type }}</p>
+    <p><strong>Desc:</strong> {{ card.desc }}</p>
+    <p><strong>Race:</strong> {{ card.race }}</p>
+    <p><strong>Attribute:</strong> {{ card.attribute }}</p>
+    <a href="{{ url_for('index') }}">Back to list</a>
+</body>
+</html>
