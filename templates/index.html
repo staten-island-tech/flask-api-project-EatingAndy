@@ -13,7 +13,7 @@
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <a href="{{ url_for('card_detail', card_id=card.id) }}" class="card-link">
             <div class="card">
-              <img src="{{ card.card_images[0].image_url_small }}" alt="{{ card.name }}">
+              <img src="{{ card.image }}" alt="{{ card.name }}">
               <div class="card-title">{{ card.name }}</div>
               <div class="card-text">{{ card.type }}</div>
             </div>
