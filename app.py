@@ -5,9 +5,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    response = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php")
-    if response.status_code != 200:
-        return "Failed to fetch data from API"
+    try:
+        response = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php")
+    except:
+        print("Unable to recieve data")
     data = response.json()
     card_list = data.get("data", [])
     cards = []
@@ -23,11 +24,9 @@ def index():
 @app.route("/card/<int:card_id>")
 def card_detail(card_id):
     response = requests.get(f"https://db.ygoprodeck.com/api/v7/cardinfo.php?id={card_id}")
-    if response.status_code != 200:
-        return f"Card with ID {card_id} not found."
     data = response.json().get("data", [])
     if not data:
-        return f"Card with ID {card_id} not found."
+        return f"Card ID {card_id} not found"
     card = data[0]
     name = card.get('name')
     type_ = card.get('type')
@@ -50,6 +49,5 @@ def card_detail(card_id):
         'race': race,
         'attribute': attribute
     })
-
 if __name__ == '__main__':
     app.run(debug=True)
